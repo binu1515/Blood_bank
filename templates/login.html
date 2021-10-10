@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <div class="container">
+        <form action="display/" method="POST">
+            {% csrf_token %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Login</div>
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+                        <div class="form-group clearfix">
+                            <label for="username" class="col-md-4 control-label text-right">Username:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="username" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label for="password" class="col-md-4 control-label text-right">Password:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="password1" type="password" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-md-offset-4">
+                            <input name="login" type="submit" value="Login" class="btn btn-success" /> &nbsp;
+                            <a href="register/">or Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+    {% for messages in messages %}
+    <h3>{{messages}}</h3>
+    {% endfor %} 
+    </div>
+   
+</body>
+</html>

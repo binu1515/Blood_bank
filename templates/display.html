@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Blood bank</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- Datatable plugin CSS file -->
+  <link rel="stylesheet" href=
+  "https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+    
+       <!-- jQuery library file -->
+       <script type="text/javascript" 
+       src="https://code.jquery.com/jquery-3.5.1.js">
+       </script>
+    
+        <!-- Datatable plugin JS library file -->
+       <script type="text/javascript" src=
+  "https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+       </script>
+</head>
+<body>
+  <div class ="nav-item"> 
+    <a href="/display">Home</a>
+    {% if user.is_authenticated %}
+    <li>Hello, {{user.username}}</li>
+    <li><a href="/logout">logout</a></li>
+    {% else %}
+    <li><a href="/register">Register</a></li>
+    <li><a href="/">Login</a></li>
+    <p><a href="/home" style="top: 100px; right: 110px;">Add donars</a></p>
+    {% endif %}
+  </div>
+ 
+<div class="container">
+  <h2><center>BLOOD BANK REGISTER</center></h2>
+  <p>Details provided in this data bank include peoples from Kollam</p>
+  <table id="tableID" class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Bloodgroup</th>
+        <th>contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result in datas %}
+
+      <tr>
+        <td>{{result.name}}</td>
+        <td>{{result.age}}</td>
+        <td>{{result.blood}}</td>
+        <td>{{result.phone}}</td>
+      </tr> 
+      {% endfor %}     
+    
+    </tbody>
+  </table>
+</div>
+<script>
+  /* Initialization of datatable */
+  $(document).ready(function() {
+      $('#tableID').DataTable({ });
+  });
+</script>
+</body>
+</html>
+
